@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "config.baseurl.endpoint.msvc-products",
+      "type": "java.lang.String",
+      "description": "Description for config.baseurl.endpoint.msvc-products."
+  }
+] }
