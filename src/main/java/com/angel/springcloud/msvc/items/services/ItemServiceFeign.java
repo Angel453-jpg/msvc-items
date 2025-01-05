@@ -1,8 +1,8 @@
 package com.angel.springcloud.msvc.items.services;
 
+import com.angel.libs.msvc.commons.entities.Product;
 import com.angel.springcloud.msvc.items.clients.ProductFeignClient;
 import com.angel.springcloud.msvc.items.models.Item;
-import com.angel.springcloud.msvc.items.models.Product;
 import feign.FeignException;
 import org.springframework.stereotype.Service;
 
@@ -41,16 +41,16 @@ public class ItemServiceFeign implements ItemService {
 
     @Override
     public Product save(Product product) {
-        return null;
+        return productFeignClient.create(product);
     }
 
     @Override
     public Product update(Product product, Long id) {
-        return null;
+        return productFeignClient.update(product, id);
     }
 
     @Override
     public void delete(Long id) {
-
+        productFeignClient.delete(id);
     }
 }

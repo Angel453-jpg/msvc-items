@@ -1,7 +1,7 @@
 package com.angel.springcloud.msvc.items.controllers;
 
+import com.angel.libs.msvc.commons.entities.Product;
 import com.angel.springcloud.msvc.items.models.Item;
-import com.angel.springcloud.msvc.items.models.Product;
 import com.angel.springcloud.msvc.items.services.ItemService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
@@ -33,7 +33,7 @@ public class ItemController {
 
     private final Environment env;
 
-    public ItemController(@Qualifier("itemServiceWebClient") ItemService service, CircuitBreakerFactory cBreakerFactory, Environment env) {
+    public ItemController(@Qualifier("itemServiceFeign") ItemService service, CircuitBreakerFactory cBreakerFactory, Environment env) {
         this.service = service;
         this.cBreakerFactory = cBreakerFactory;
         this.env = env;

@@ -1,7 +1,7 @@
 package com.angel.springcloud.msvc.items.services;
 
+import com.angel.libs.msvc.commons.entities.Product;
 import com.angel.springcloud.msvc.items.models.Item;
-import com.angel.springcloud.msvc.items.models.Product;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
