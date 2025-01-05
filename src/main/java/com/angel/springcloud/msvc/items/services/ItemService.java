@@ -1,7 +1,7 @@
 package com.angel.springcloud.msvc.items.services;
 
+import com.angel.libs.msvc.commons.entities.Product;
 import com.angel.springcloud.msvc.items.models.Item;
-import com.angel.springcloud.msvc.items.models.Product;
 
 import java.util.List;
 import java.util.Optional;

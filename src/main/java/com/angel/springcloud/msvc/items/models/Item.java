@@ -1,5 +1,7 @@
 package com.angel.springcloud.msvc.items.models;
 
+import com.angel.libs.msvc.commons.entities.Product;
+
 public class Item {
 
     private Product product;
