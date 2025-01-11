@@ -12,16 +12,16 @@ import java.util.*;
 @Service
 public class ItemServiceWebClient implements ItemService {
 
-    private final WebClient.Builder client;
+    private final WebClient client;
 
-    public ItemServiceWebClient(WebClient.Builder builder) {
+    public ItemServiceWebClient(WebClient builder) {
         this.client = builder;
     }
 
     @Override
     public List<Item> findAll() {
 
-        return this.client.build()
+        return this.client
                 .get()
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
@@ -39,7 +39,7 @@ public class ItemServiceWebClient implements ItemService {
         params.put("id", id);
 
 //        try {
-        return Optional.ofNullable(this.client.build()
+        return Optional.ofNullable(this.client
                 .get()
                 .uri("/{id}", params)
                 .accept(MediaType.APPLICATION_JSON)
@@ -56,7 +56,7 @@ public class ItemServiceWebClient implements ItemService {
     @Override
     public Product save(Product product) {
 
-        return client.build()
+        return client
                 .post()
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(product)
@@ -72,7 +72,7 @@ public class ItemServiceWebClient implements ItemService {
         Map<String, Long> params = new HashMap<>();
         params.put("id", id);
 
-        return client.build()
+        return client
                 .put()
                 .uri("/{id}", params)
                 .accept(MediaType.APPLICATION_JSON)
@@ -90,7 +90,7 @@ public class ItemServiceWebClient implements ItemService {
         Map<String, Long> params = new HashMap<>();
         params.put("id", id);
 
-        client.build()
+        client
                 .delete()
                 .uri("/{id}", params)
                 .retrieve()

@@ -33,7 +33,7 @@ public class ItemController {
 
     private final Environment env;
 
-    public ItemController(@Qualifier("itemServiceFeign") ItemService service, CircuitBreakerFactory cBreakerFactory, Environment env) {
+    public ItemController(@Qualifier("itemServiceWebClient") ItemService service, CircuitBreakerFactory cBreakerFactory, Environment env) {
         this.service = service;
         this.cBreakerFactory = cBreakerFactory;
         this.env = env;
@@ -57,8 +57,9 @@ public class ItemController {
 
     @GetMapping
     public List<Item> list(@RequestParam(name = "name", required = false) String name, @RequestHeader(name = "token-request", required = false) String token) {
-        System.out.println(name);
-        System.out.println(token);
+        logger.info("Llamada a método del controller ItemController::list()");
+        logger.info("Request Parameter: {}", name);
+        logger.info("Token: {}", token);
         return service.findAll();
     }
 
@@ -86,18 +87,21 @@ public class ItemController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Product create(@RequestBody Product product) {
+        logger.info("Product creando: {}", product);
         return service.save(product);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Product update(@RequestBody Product product, @PathVariable Long id) {
+        logger.info("Product actualizando: {}", product);
         return service.update(product, id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
+        logger.info("Product eliminando con id: {}", id);
         service.delete(id);
     }
 
